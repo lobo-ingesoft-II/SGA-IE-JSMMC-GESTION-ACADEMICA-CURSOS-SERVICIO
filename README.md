@@ -106,7 +106,7 @@ Este servicio permite gestionar los cursos en el sistema académico. Proporciona
 3. Ejecuta el servidor:
 
    ```bash
-   uvicorn app.main:app --reload
+   uvicorn app.main:app --reload --port 8004
    ```
 
 ## Pruebas
@@ -122,6 +122,10 @@ pytest app/tests/test_cursos.py
 * **FastAPI**: Framework principal.
 * **SQLAlchemy**: ORM para manejar la base de datos.
 * **Pytest**: Framework para pruebas unitarias.
+
+## Documentación interactiva
+
+Accede a la documentación Swagger en [http://localhost:8004/docs](http://localhost:8004/docs) o ReDoc en [http://localhost:8004/redoc](http://localhost:8004/redoc).
 
 ## Contacto
 
