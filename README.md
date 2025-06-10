@@ -62,7 +62,7 @@ Este servicio permite gestionar los cursos en el sistema académico. Proporciona
 }
 ```
 
-### Listar todas las calificaciones
+### Listar todas los cursos
 
 **GET** `/cursos/`
 

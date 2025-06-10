@@ -13,3 +13,4 @@
 ### Corregido
 - Validación de longitud mínima y máxima para el nombre del curso.
 - Mejora en los mensajes de error para registros no encontrados.
+- Se ajusta titulo en el README.md
