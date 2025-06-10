@@ -14,3 +14,10 @@
 - Validación de longitud mínima y máxima para el nombre del curso.
 - Mejora en los mensajes de error para registros no encontrados.
 - Se ajusta titulo en el README.md
+
+## [1.0.2] - 2025-06-10
+### Corregido
+- Se corrige FK del modelo
+### Agregado
+- Se agrega el puerto 8004 al README.md
+- Se agrega sección de documentación interactiva
