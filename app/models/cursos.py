@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from app.db import Base
 
+
 class Curso(Base):
     __tablename__ = "cursos"
 
