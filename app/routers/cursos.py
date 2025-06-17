@@ -4,6 +4,8 @@ from app.schemas.cursos import CursoCreate, CursoResponse
 from app.services.cursos import create_curso, get_curso, list_cursos
 from app.db import SessionLocal
 from app.services.cursos import list_cursos_by_profesor
+from app.services.cursos import create_curso
+from app.db import get_db
 
 
 
@@ -17,8 +19,9 @@ def get_db():
         db.close()
 
 @router.post("/", response_model=CursoResponse)
-def create(curso: CursoCreate, db: Session = Depends(get_db)):
-    return create_curso(db, curso)
+def crear_curso(curso: CursoCreate, db: Session = Depends(get_db)):
+    db_curso = create_curso(db, curso)
+    return db_curso
 
 @router.get("/{id_curso}", response_model=CursoResponse)
 def get(id_curso: int, db: Session = Depends(get_db)):

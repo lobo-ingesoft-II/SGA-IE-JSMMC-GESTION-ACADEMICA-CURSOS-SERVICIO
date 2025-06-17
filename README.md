@@ -12,11 +12,12 @@ Este servicio permite gestionar los cursos en el sistema académico. Proporciona
 
 ```json
 {
-  "nombre": "Curso 101",
+ "nombre": "Curso 101",
   "grado": "Primero",
   "anio_lectivo": 2025,
   "id_sede": 1,
-  "director_profesor": 1
+  "director_profesor": 1,
+  "asignaturas": [10, 11, 12]
 }
 ```
 
@@ -31,7 +32,8 @@ Este servicio permite gestionar los cursos en el sistema académico. Proporciona
   "grado": "Primero",
   "anio_lectivo": 2025,
   "id_sede": 1,
-  "director_profesor": 1
+  "director_profesor": 1,
+  "asignaturas": [10, 11, 12]
 }
 ```
 
@@ -50,7 +52,8 @@ Este servicio permite gestionar los cursos en el sistema académico. Proporciona
   "grado": "Primero",
   "anio_lectivo": 2025,
   "id_sede": 1,
-  "director_profesor": 1
+  "director_profesor": 1,
+  "asignaturas": [10, 11, 12]
 }
 ```
 
@@ -78,7 +81,8 @@ Este servicio permite gestionar los cursos en el sistema académico. Proporciona
     "grado": "Primero",
     "anio_lectivo": 2025,
     "id_sede": 1,
-    "director_profesor": 1
+    "director_profesor": 1,
+    "asignaturas": [10, 11, 12]
   },
   {
     "id_curso": 2,
@@ -86,7 +90,8 @@ Este servicio permite gestionar los cursos en el sistema académico. Proporciona
     "grado": "Segundo",
     "anio_lectivo": 2025,
     "id_sede": 1,
-    "director_profesor": 2
+    "director_profesor": 2,
+    "asignaturas": [13, 14]
   }
 ]
 ```

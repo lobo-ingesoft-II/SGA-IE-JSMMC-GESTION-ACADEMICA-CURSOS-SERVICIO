@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import List
 
 class CursoBase(BaseModel):
     nombre: str
@@ -8,10 +9,11 @@ class CursoBase(BaseModel):
     director_profesor: int
 
 class CursoCreate(CursoBase):
-    pass
+    asignaturas: List[int] = []
 
 class CursoResponse(CursoBase):
     id_curso: int
+    asignaturas: List[int] = []
 
     class Config:
         orm_mode = True

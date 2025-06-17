@@ -21,3 +21,9 @@
 ### Agregado
 - Se agrega el puerto 8004 al README.md
 - Se agrega sección de documentación interactiva
+
+## [1.0.3] - 2025-06-16
+### Agregado
+- Se permite asociar una lista de IDs de asignaturas a cada curso al momento de crearlo.
+- Los endpoints **GET** `/cursos/` y `/cursos/{id_curso}` ahora devuelven la lista de asignaturas asociadas a cada curso.
+- Se actualiza la documentación y ejemplos en el README.md para reflejar estos cambios.
