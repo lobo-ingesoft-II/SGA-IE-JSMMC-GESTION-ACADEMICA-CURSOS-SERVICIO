@@ -1,7 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import cursos
-from app.db import init_db, test_connection
+
+from app.backend.session import Base, engine
+
+#Lee todas las clases que heredan de Base.
+# Genera el SQL necesario para crear las tablas en la base de datos.
+# No borra ni modifica tablas existentes, solo crea las que faltan.
+Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI(title="Cursos API")
 
@@ -14,10 +21,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.on_event("startup")
-def startup_event():
-    init_db()
-    test_connection()
+
 
 # Registrar rutas
 app.include_router(cursos.router, prefix="/cursos", tags=["Cursos"])
