@@ -5,91 +5,16 @@ Este servicio permite gestionar los cursos en el sistema académico. Proporciona
 
 ## Endpoints
 
-### Registrar un curso
-**POST** `/cursos/`
+## Tabla de Endpoints
 
-#### Request Body
-
-```json
-{
-  "nombre": "Curso 101",
-  "grado": "Primero",
-  "anio_lectivo": 2025,
-  "id_sede": 1,
-  "director_profesor": 1
-}
-```
-
-#### Response
-
-**Status:** 200 OK
-
-```json
-{
-  "id_curso": 1,
-  "nombre": "Curso 101",
-  "grado": "Primero",
-  "anio_lectivo": 2025,
-  "id_sede": 1,
-  "director_profesor": 1
-}
-```
-
-### Obtener un curso por ID
-
-**GET** `/cursos/{id_curso}`
-
-#### Response
-
-**Status:** 200 OK
-
-```json
-{
-  "id_curso": 1,
-  "nombre": "Curso 101",
-  "grado": "Primero",
-  "anio_lectivo": 2025,
-  "id_sede": 1,
-  "director_profesor": 1
-}
-```
-
-**Status:** 404 Not Found
-
-```json
-{
-  "detail": "Curso not found"
-}
-```
-
-### Listar todas los cursos
-
-**GET** `/cursos/`
-
-#### Response
-
-**Status:** 200 OK
-
-```json
-[
-  {
-    "id_curso": 1,
-    "nombre": "Curso 101",
-    "grado": "Primero",
-    "anio_lectivo": 2025,
-    "id_sede": 1,
-    "director_profesor": 1
-  },
-  {
-    "id_curso": 2,
-    "nombre": "Curso 102",
-    "grado": "Segundo",
-    "anio_lectivo": 2025,
-    "id_sede": 1,
-    "director_profesor": 2
-  }
-]
-```
+| Método | Endpoint                                         | Descripción                              | Request Body         | Respuesta Principal                |
+|--------|--------------------------------------------------|------------------------------------------|----------------------|------------------------------------|
+| POST   | `/cursos/`                                       | Registrar un curso                       | Sí                   | Curso creado (200 OK)              |
+| GET    | `/cursos/{id_curso}`                             | Obtener un curso por ID                   | No                   | Curso o 404 Not Found              |
+| GET    | `/cursos/`                                       | Listar todos los cursos                   | No                   | Lista de cursos                    |
+| GET    | `/cursos/profesores/{id_profesor}/cursos`        | Listar cursos por profesor                | No                   | Lista de cursos o 404 Not Found    |
+| DELETE | `/cursos/{id_curso}`                             | Eliminar un curso por ID                  | No                   | Curso eliminado o 404 Not Found    |
+| PUT    | `/cursos/{id_curso}/profesor/{id_profesor}`      | Actualizar director de un curso           | No                   | Curso actualizado o 404 Not Found  |
 
 ## Instalación
 
