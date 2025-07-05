@@ -8,7 +8,7 @@ def obtener_profesor(id: str):
 
     # **GET** `/estudiantes/{id_estudiante}`
     url = url_servidor + f"/profesor/{id}"  
-
+  
     # Realizar la solicitud GET a la API 
     response = requests.get(url)
 
@@ -16,12 +16,11 @@ def obtener_profesor(id: str):
     
     if response.status_code == 200:
         data = response.json()  # Obtener los datos en formato JSON
+        # print(data)
 
-        if isinstance(data, dict):  # Si es un diccionario
-            return data.get("documento", None)  # Retornar los datos dentro de la clave "data" o None si no existe
-        elif not data:  # Si no hay datos, retornar None
-            return None
-        
-        return response.json() # Retornar los datos en formato JSON 
+        if isinstance(data, dict) and data:  # Si es un diccionario y no está vacío
+            return data  # Retorna el objeto completo del profesor
+        else:
+            return None        
     else:
         return None

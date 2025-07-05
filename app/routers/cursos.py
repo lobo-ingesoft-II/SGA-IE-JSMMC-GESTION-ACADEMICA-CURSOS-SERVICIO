@@ -29,18 +29,21 @@ def list_all(db: Session = Depends(get_db)):
     return list_cursos(db)
 
 @router.get("/profesores/{id_profesor}/cursos", response_model=list[CursoResponse])
-def get_cursos_de_profesor(id_profesor: int, db: Session = Depends(get_db)):
-    return list_cursos_by_profesor(db, id_profesor)
+async def get_cursos_de_profesor(id_profesor: int, db: Session = Depends(get_db)):
+    cursos = list_cursos_by_profesor(db, id_profesor)
+    if cursos is None: 
+        raise  HTTPException(status_code=404, detail="Profesor no encontrado")
+    return cursos
 
 @router.delete("/{id_curso}", response_model=CursoResponse)
-def delete(id_curso: int, db: Session = Depends(get_db)):
+async def delete(id_curso: int, db: Session = Depends(get_db)):
     curso = delete_curso(db, id_curso)
     if curso is None:
         raise HTTPException(status_code=404, detail="Curso not found")
     return curso
 
 @router.put("/{id_curso}/profesor/{id_profesor}", response_model=CursoResponse)
-def update_profesor_in_curso(id_curso: int, id_profesor: int, db: Session = Depends(get_db)):
+async def update_profesor_in_curso(id_curso: int, id_profesor: int, db: Session = Depends(get_db)):
     curso = update_in_curso_professorId(db, id_profesor, id_curso)
     if curso is None:
         raise HTTPException(status_code=404, detail="Curso or Profesor not found")

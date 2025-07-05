@@ -29,14 +29,18 @@ def list_cursos(db: Session):
     return db.query(Curso).all()
 
 def update_in_curso_professorId(db: Session, id_profesor: int, id_curso: int):
-    
+
     # Obtener el profesor de la API profesor y con eso revisar si existe 
     profesorDic = obtener_profesor(id_profesor)
+    print(profesorDic)
     if not profesorDic:
         return None
 
     # Verificar si el curso existe
+    # print("id Curso",id_curso)
     curso = db.query(Curso).filter(Curso.id_curso == id_curso).first()
+    # print(curso)
+
     if not curso:
         return None
 
