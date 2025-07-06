@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 class CursoBase(BaseModel):
     nombre: str
@@ -13,5 +13,4 @@ class CursoCreate(CursoBase):
 class CursoResponse(CursoBase):
     id_curso: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
