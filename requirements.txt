@@ -8,3 +8,6 @@ cffi==1.17.1
 cryptography==45.0.3 
 pycparser==2.22
 requests==2.31.0
+prometheus_client ==0.18.0
+
+
