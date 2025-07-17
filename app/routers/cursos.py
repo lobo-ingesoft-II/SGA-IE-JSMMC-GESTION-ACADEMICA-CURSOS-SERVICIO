@@ -47,12 +47,8 @@ def custom_metrics():
     registry.register(ERROR_COUNT_COURSES_ROUTERS)
     return Response(generate_latest(registry), media_type=CONTENT_TYPE_LATEST)
 
-
-
-
 @router.post("/", response_model=CursoResponse)
 def create(curso: CursoCreate, db: Session = Depends(get_db)):
-    curso = create_curso(db, curso)
     return create_curso(db, curso)
 
 @router.get("/{id_curso}", response_model=CursoResponse)

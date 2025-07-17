@@ -1,11 +1,27 @@
+import requests
 from sqlalchemy.orm import Session
 from app.models.cursos import Curso
 from app.schemas.cursos import CursoCreate
-from app.services.request_estudiante import obtener_profesor
-# from app.models.profesor_curso import profesor_curso
+
+API_SEDES_URL = "http://127.0.0.1:8001/sedes"
+API_PROFESORES_URL = "http://127.0.0.1:8000/profesor"
+
+def sede_existe(id_sede: int) -> bool:
+    resp = requests.get(f"{API_SEDES_URL}/{id_sede}")
+    return resp.status_code == 200
+
+def profesor_existe(id_profesor: int) -> bool:
+    resp = requests.get(f"{API_PROFESORES_URL}/{id_profesor}")
+    return resp.status_code == 200
 
 def create_curso(db: Session, curso: CursoCreate):
-    db_curso = Curso(**curso.model_dump())
+    # Validar sede
+    if not sede_existe(curso.id_sede):
+        raise ValueError("La sede no existe")
+    # Validar profesor
+    if not profesor_existe(curso.director_profesor):
+        raise ValueError("El profesor no existe")
+    db_curso = Curso(**curso.dict())
     db.add(db_curso)
     db.commit()
     db.refresh(db_curso)
@@ -64,10 +80,3 @@ def list_cursos_by_profesor(db: Session, profesor_id: int):
 
     # Retornar la lista (vacía si no hay cursos)
     return cursos
-
-    # return (
-    #     db.query(Curso)
-    #     .join(profesor_curso, Curso.id_curso == profesor_curso.c.id_curso)
-    #     .filter(profesor_curso.c.id_profesor == profesor_id)
-    #     .all()
-    # )
