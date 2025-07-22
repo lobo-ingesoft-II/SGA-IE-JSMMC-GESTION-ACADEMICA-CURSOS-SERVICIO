@@ -21,7 +21,9 @@ print(config)
 
 
 # Crear engine
-engine = create_engine(settings.sqlalchemy_database_uri) # Gestiona las conexion en la app
+# engine = create_engine(settings.sqlalchemy_database_uri) # Gestiona las conexion en la app
+engine = create_engine("mysql+pymysql://root:1234@host.docker.internal:3306/cursos_db") # Gestiona las conexion en la app
+
 
 # Crear sesión
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine) # Crea una sección personalizada cada vez que la base de datos necesita realziar una operacion de CONSULTA, INSERTAR, ACTUALIZAR
