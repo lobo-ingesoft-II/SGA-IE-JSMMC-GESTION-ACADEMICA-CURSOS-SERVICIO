@@ -2,10 +2,10 @@ import requests
 from sqlalchemy.orm import Session
 from app.models.cursos import Curso
 from app.schemas.cursos import CursoCreate
+from app.services.profesor import obtener_profesor
 
 API_SEDES_URL = "http://127.0.0.1:8000/sedes"
-# REVISAR
-# API_PROFESORES_URL = "http://127.0.0.1:8000/profesor"
+API_PROFESORES_URL = "http://127.0.0.1:8009/profesor"
 
 def sede_existe(id_sede: int) -> bool:
     resp = requests.get(f"{API_SEDES_URL}/{id_sede}")

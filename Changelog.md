@@ -32,3 +32,8 @@
 - Importación de `patch` y `Mock` en las pruebas unitarias.
 - Importación de la clase `Curso` en las pruebas unitarias.
 - Resolución de problemas con `Base.metadata.create_all` en las pruebas.W
+
+## [1.0.4] - 2025-07-21
+
+### Corregido
+- Se ajusta API Profesor = AUTENTICACION.
