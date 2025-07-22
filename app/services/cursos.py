@@ -4,8 +4,8 @@ from app.models.cursos import Curso
 from app.schemas.cursos import CursoCreate
 from app.services.profesor import obtener_profesor
 
-API_SEDES_URL = "http://127.0.0.1:8000/sedes"
-API_PROFESORES_URL = "http://127.0.0.1:8009/profesor"
+API_SEDES_URL = "http://sga-sedes-service:8000"
+API_PROFESORES_URL = "http://sga-autenticacion-service:8009"
 
 def sede_existe(id_sede: int) -> bool:
     resp = requests.get(f"{API_SEDES_URL}/{id_sede}")

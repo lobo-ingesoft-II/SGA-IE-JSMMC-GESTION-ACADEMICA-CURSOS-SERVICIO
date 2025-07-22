@@ -11,7 +11,7 @@ class Settings(BaseSettings):
 
     # Request 
     url_api_sga_autenticacion : str = Field(..., alias="SERVIDOR_API_AUTENTICACION_URL")
-
+    DATABASE_URL: str = Field(..., alias="DATABASE_URL")
 
     @property
     def sqlalchemy_database_uri(self):
