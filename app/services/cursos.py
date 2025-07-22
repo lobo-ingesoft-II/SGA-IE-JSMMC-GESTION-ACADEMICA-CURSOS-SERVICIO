@@ -1,6 +1,7 @@
 import requests
 from sqlalchemy.orm import Session
 from app.models.cursos import Curso
+from app.schemas.cursos import CursoCreate
 from app.services.profesor import obtener_profesor
 
 API_SEDES_URL = "http://127.0.0.1:8000/sedes"
